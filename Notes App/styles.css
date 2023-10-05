@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  overflow: scroll;
+}
+
+.wrapper {
+  margin: 50px;
+  min-height: 100vh;
+  padding: 50px;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fill, 265px);
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(239, 125, 148),
+    rgb(240, 47, 86)
+  );
+}
+
+.wrapper li {
+  height: 250px;
+  list-style: none;
+
+  border-radius: 5px;
+  padding: 15px 20px 20px;
+}
+.wrapper li:not(.add-box) {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.wrapper .note {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.note .details {
+  max-height: 165px;
+  overflow-y: auto;
+}
+.add-box {
+  background-color: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  transition: translate(-50%, -50%);
+  list-style: none;
+}
+.add-box .icon {
+  display: flex;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 50%;
+}
+.add-box i {
+  background-color: rgba(255, 255, 255, 0.3);
+  font-size: 32px;
+  padding: 0px 7px;
+  border-radius: 50%;
+  list-style: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.add-box p {
+  opacity: 0%;
+  width: 120px;
+  z-index: 2;
+  right: 100%;
+  transition: all 0.5s ease;
+  transform: scale(0);
+  padding-bottom: 5px;
+}
+.add-box:hover p {
+  opacity: 100%;
+
+  cursor: pointer;
+  transform: scale(1);
+}
+
+.note p {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.note span {
+  display: block;
+  margin-top: 5px;
+  color: #2c2c2c;
+  font-size: 16px;
+}
+
+.bottom-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.settings .menu .li,
+.content header,
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottom-container span {
+  font-weight: bold;
+  color: #6e3d3db6;
+  font-size: 14px;
+}
+
+.bottom-container .settings {
+  color: #4a4949;
+  font-size: 15px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.settings {
+  position: relative;
+}
+.settings .menu {
+  display: flex;
+  flex-direction: column;
+  transform: scale(0);
+  position: absolute;
+  bottom: 0px;
+  right: -5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+  border-radius: 10px;
+}
+.settings.show .menu {
+  transform: scale(1);
+}
+.settings .menu li {
+  height: fit-content;
+  border-radius: 5px;
+  font-size: 16px;
+  z-index: 3;
+  padding: 12px 0px;
+  width: 110px;
+  padding-left: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu li:hover {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.menu li i {
+  padding-left: 8px;
+}
+
+.popup-box {
+  z-index: 2;
+  /* display: none; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.popup-box .popup {
+  position: absolute;
+  max-width: 400px;
+  width: 100%;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+}
+
+.popup-box .popup,
+.popup-box {
+  opacity: 0%;
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.popup-box.show .popup,
+.popup-box.show {
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.25s ease;
+}
+.popup .content {
+  width: calc(100% - 15px);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+
+.popup .content header {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 15px 25px;
+  border-bottom: 1px solid #ccc;
+}
+
+.content header i {
+  color: #8b8b8b;
+  cursor: pointer;
+  font-size: 23px;
+}
+
+.content form {
+  margin: 15px 25px;
+}
+
+.content form .row {
+  margin-bottom: 20px;
+}
+
+form .row label {
+  display: block;
+  font-weight: bold;
+}
+.content form :where(input, textarea) {
+  padding: 8px 15px;
+  font-size: 20px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #999;
+  outline: none;
+}
+
+.content form textarea {
+  height: 150px;
+  resize: none;
+  font-size: 15px;
+  padding: 8px 15px;
+}
+
+.content form button {
+  opacity: 50%;
+  width: 100%;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: black;
+  background: linear-gradient(
+    to bottom right,
+    rgba(239, 125, 148, 0.7),
+    rgba(240, 47, 86, 0.7)
+  );
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 17px;
+  cursor: not-allowed;
+}
